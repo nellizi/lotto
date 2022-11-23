@@ -1,10 +1,8 @@
 <html xmlns:th="http://thymeleaf.org" >
 
-
 <head>
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
-
 
 <h1> Make Your Own Number </h1>
 
@@ -24,24 +22,18 @@
 
 <div class="main">
     <div class="numberdiv">
-<!--        <div class="top-div">-->
-<!--            <span   class="top-div-name" th:text="|${numbers.times} 회차 당첨번호|">  </span>-->
-<!--        </div>-->
-
         <div class="top-div">
             <span style="text-align:center;  color:red;"  class="top-div-name"  th:text="${numbers.times} "> </span>
             <span >회차 당첨번호</span>
         </div>
-
-
         <div class="numberset">
-            <div class="lottocircle"><p class="value">5</p></div>
-            <div class="lottocircle"><p class="value">10</p></div>
-            <div class="lottocircle"><p class="value">21</p></div>
-            <div class="lottocircle"><p class="value">37</p></div>
-            <div class="lottocircle"><p class="value">41</p></div>
-            <div class="lottocircle"><p class="value">42</p></div>
-            <div class="lottocircle"><p class="value">42</p></div>
+            <div class="lottocircle"><p class="value" th:text="${numbers.no1}" ></p></div>
+            <div class="lottocircle"><p class="value" th:text="${numbers.no2}"></p></div>
+            <div class="lottocircle"><p class="value" th:text="${numbers.no3}"></p></div>
+            <div class="lottocircle"><p class="value" th:text="${numbers.no4}"></p></div>
+            <div class="lottocircle"><p class="value" th:text="${numbers.no5}"></p></div>
+            <div class="lottocircle"><p class="value" th:text="${numbers.no6}"></p></div>
+            <div class="lottocircle"><p class="value" th:text="${numbers.bonus}"></p></div>
         </div>
     </div>
 </div>

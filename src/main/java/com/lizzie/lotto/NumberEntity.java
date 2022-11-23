@@ -6,7 +6,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class NumberEntity {
-    public NumberEntity(String times, String no1, String no2, String no3, String no4, String no5, String no6, String bonus) {
+    public NumberEntity(int times, int no1, int no2, int no3, int no4, int no5, int no6, int bonus) {
         this.times = times;
         this.no1 = no1;
         this.no2 = no2;
@@ -17,12 +17,12 @@ public class NumberEntity {
         this.bonus = bonus;
     }
 
-    String times;
-    String no1;
-    String no2;
-    String no3;
-    String no4;
-    String no5;
-    String no6;
-    String bonus;
+    int times;
+    int no1;
+    int no2;
+    int no3;
+    int no4;
+    int no5;
+    int no6;
+    int bonus;
 }
