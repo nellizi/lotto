@@ -1,9 +1,207 @@
-<!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://thymeleaf.org" >
+
+
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
+
+
+<h1> Make Your Own Number </h1>
+
 <body>
+<div>
+    <h4  th:text="|${numbers.times} 회차 당첨번호|"> </h4>
+        <div>
+            <span th:text="${numbers.no1}"> </span> &nbsp;&nbsp;
+            <span th:text="${numbers.no2}"> </span> &nbsp;&nbsp;
+            <span th:text="${numbers.no3}"> </span> &nbsp;&nbsp;
+            <span th:text="${numbers.no4}"> </span> &nbsp;&nbsp;
+            <span th:text="${numbers.no5}"> </span> &nbsp;&nbsp;
+            <span th:text="${numbers.no6}"> </span> &nbsp;&nbsp;
+            <span th:text="${numbers.bonus}"> </span>
+        </div>
+</div>
+
+<div class="main">
+    <div class="numberdiv">
+<!--        <div class="top-div">-->
+<!--            <span   class="top-div-name" th:text="|${numbers.times} 회차 당첨번호|">  </span>-->
+<!--        </div>-->
+
+        <div class="top-div">
+            <span style="text-align:center;  color:red;"  class="top-div-name"  th:text="${numbers.times} "> </span>
+            <span >회차 당첨번호</span>
+        </div>
+
+
+        <div class="numberset">
+            <div class="lottocircle"><p class="value">5</p></div>
+            <div class="lottocircle"><p class="value">10</p></div>
+            <div class="lottocircle"><p class="value">21</p></div>
+            <div class="lottocircle"><p class="value">37</p></div>
+            <div class="lottocircle"><p class="value">41</p></div>
+            <div class="lottocircle"><p class="value">42</p></div>
+            <div class="lottocircle"><p class="value">42</p></div>
+        </div>
+    </div>
+</div>
+
+<script>
+        var number = document.getElementsByClassName("lottocircle");
+        for (var i = 0 ; i < number.length ; i++) {
+            if(parseInt(number[i].textContent)>=40){
+                number[i].style="background-color:#8b00ff";
+            }else if(parseInt(number[i].textContent)>=30){
+                number[i].style="background-color:#146eb4";
+            }else if(parseInt(number[i].textContent)>=20){
+                number[i].style="background-color:#c1d82f";
+            }else if(parseInt(number[i].textContent)>=10){
+                number[i].style="background-color:#fbb034";
+            }
+            else{
+                number[i].style="background-color:#ff0000";
+            }
+        }
+    </script>
+
+
+
+
+<div style=" float:left; margin-right:20px;">
+    <h4> 포함 숫자</h4>
+
+<form method="get" action="form-action.html">
+    <div>
+        <label><input type="checkbox" name="color" value="1"> 1</label>
+        <label><input type="checkbox" name="color" value="2"> 2</label>
+        <label><input type="checkbox" name="color" value="3"> 3</label>
+        <label><input type="checkbox" name="color" value="4"> 4</label>
+        <label><input type="checkbox" name="color" value="5"> 5</label>
+        <label><input type="checkbox" name="color" value="6"> 6</label>
+        <label><input type="checkbox" name="color" value="7"> 7</label>
+    </div>
+    <div>
+        <label><input type="checkbox" name="color" value="8"> 8</label>
+        <label><input type="checkbox" name="color" value="9"> 9</label>
+        <label><input type="checkbox" name="color" value="10"> 10</label>
+        <label><input type="checkbox" name="color" value="11"> 11</label>
+        <label><input type="checkbox" name="color" value="12"> 12</label>
+        <label><input type="checkbox" name="color" value="13"> 13</label>
+        <label><input type="checkbox" name="color" value="14"> 14</label>
+    </div>
+    <div>
+        <label><input type="checkbox" name="color" value="15"> 15</label>
+        <label><input type="checkbox" name="color" value="16"> 16</label>
+        <label><input type="checkbox" name="color" value="17"> 17</label>
+        <label><input type="checkbox" name="color" value="18"> 18</label>
+        <label><input type="checkbox" name="color" value="19"> 19</label>
+        <label><input type="checkbox" name="color" value="20"> 20</label>
+        <label><input type="checkbox" name="color" value="21"> 21</label>
+    </div>
+    <div>
+        <label><input type="checkbox" name="color" value="22"> 22</label>
+        <label><input type="checkbox" name="color" value="23"> 23</label>
+        <label><input type="checkbox" name="color" value="24"> 24</label>
+        <label><input type="checkbox" name="color" value="25"> 25</label>
+        <label><input type="checkbox" name="color" value="26"> 26</label>
+        <label><input type="checkbox" name="color" value="27"> 27</label>
+        <label><input type="checkbox" name="color" value="28"> 28</label>
+    </div>
+    <div>
+        <label><input type="checkbox" name="color" value="29"> 29</label>
+        <label><input type="checkbox" name="color" value="30"> 30</label>
+        <label><input type="checkbox" name="color" value="31"> 31</label>
+        <label><input type="checkbox" name="color" value="32"> 32</label>
+        <label><input type="checkbox" name="color" value="33"> 33</label>
+        <label><input type="checkbox" name="color" value="34"> 34</label>
+        <label><input type="checkbox" name="color" value="35"> 35</label>
+    </div>
+    <div>
+        <label><input type="checkbox" name="color" value="36"> 36</label>
+        <label><input type="checkbox" name="color" value="37"> 37</label>
+        <label><input type="checkbox" name="color" value="38"> 38</label>
+        <label><input type="checkbox" name="color" value="39"> 39</label>
+        <label><input type="checkbox" name="color" value="40"> 40</label>
+        <label><input type="checkbox" name="color" value="41"> 41</label>
+        <label><input type="checkbox" name="color" value="42"> 42</label>
+    </div>
+    <div>
+        <label><input type="checkbox" name="color" value="43"> 43</label>
+        <label><input type="checkbox" name="color" value="44"> 44</label>
+        <label><input type="checkbox" name="color" value="45"> 45</label>
+    </div>
+
+    <p><input type="submit" value="Submit"> <input type="reset" value="Reset"></p>
+</form>
+</div>
+
+<div style=" float:left;">
+    <h4> 제외 숫자</h4>
+
+<form method="get" action="form-action.html">
+    <div>
+        <label><input type="checkbox" name="color" value="1"> 1</label>
+        <label><input type="checkbox" name="color" value="2"> 2</label>
+        <label><input type="checkbox" name="color" value="3"> 3</label>
+        <label><input type="checkbox" name="color" value="4"> 4</label>
+        <label><input type="checkbox" name="color" value="5"> 5</label>
+        <label><input type="checkbox" name="color" value="6"> 6</label>
+        <label><input type="checkbox" name="color" value="7"> 7</label>
+    </div>
+    <div>
+        <label><input type="checkbox" name="color" value="8"> 8</label>
+        <label><input type="checkbox" name="color" value="9"> 9</label>
+        <label><input type="checkbox" name="color" value="10"> 10</label>
+        <label><input type="checkbox" name="color" value="11"> 11</label>
+        <label><input type="checkbox" name="color" value="12"> 12</label>
+        <label><input type="checkbox" name="color" value="13"> 13</label>
+        <label><input type="checkbox" name="color" value="14"> 14</label>
+    </div>
+    <div>
+        <label><input type="checkbox" name="color" value="15"> 15</label>
+        <label><input type="checkbox" name="color" value="16"> 16</label>
+        <label><input type="checkbox" name="color" value="17"> 17</label>
+        <label><input type="checkbox" name="color" value="18"> 18</label>
+        <label><input type="checkbox" name="color" value="19"> 19</label>
+        <label><input type="checkbox" name="color" value="20"> 20</label>
+        <label><input type="checkbox" name="color" value="21"> 21</label>
+    </div>
+    <div>
+        <label><input type="checkbox" name="color" value="22"> 22</label>
+        <label><input type="checkbox" name="color" value="23"> 23</label>
+        <label><input type="checkbox" name="color" value="24"> 24</label>
+        <label><input type="checkbox" name="color" value="25"> 25</label>
+        <label><input type="checkbox" name="color" value="26"> 26</label>
+        <label><input type="checkbox" name="color" value="27"> 27</label>
+        <label><input type="checkbox" name="color" value="28"> 28</label>
+    </div>
+    <div>
+        <label><input type="checkbox" name="color" value="29"> 29</label>
+        <label><input type="checkbox" name="color" value="30"> 30</label>
+        <label><input type="checkbox" name="color" value="31"> 31</label>
+        <label><input type="checkbox" name="color" value="32"> 32</label>
+        <label><input type="checkbox" name="color" value="33"> 33</label>
+        <label><input type="checkbox" name="color" value="34"> 34</label>
+        <label><input type="checkbox" name="color" value="35"> 35</label>
+    </div>
+    <div>
+        <label><input type="checkbox" name="color" value="36"> 36</label>
+        <label><input type="checkbox" name="color" value="37"> 37</label>
+        <label><input type="checkbox" name="color" value="38"> 38</label>
+        <label><input type="checkbox" name="color" value="39"> 39</label>
+        <label><input type="checkbox" name="color" value="40"> 40</label>
+        <label><input type="checkbox" name="color" value="41"> 41</label>
+        <label><input type="checkbox" name="color" value="42"> 42</label>
+    </div>
+    <div>
+        <label><input type="checkbox" name="color" value="43"> 43</label>
+        <label><input type="checkbox" name="color" value="44"> 44</label>
+        <label><input type="checkbox" name="color" value="45"> 45</label>
+    </div>
+
+    <p><input type="submit" value="Submit"> <input type="reset" value="Reset"></p>
+</form>
+</div>
+
+
 </body>
-</html>
