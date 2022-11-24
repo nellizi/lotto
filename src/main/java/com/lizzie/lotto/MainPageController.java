@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.io.IOException;
+import java.util.Map;
 
 @Controller
 @RequiredArgsConstructor
@@ -54,9 +55,17 @@ public class MainPageController {
 
         @ResponseBody
         @GetMapping("/make")
-        public String makenumber(){
+        public String[] makenumber(@RequestParam Map<String,String> params, @RequestParam(value="include", required=false) String []include,
+                                   @RequestParam(value="except", required=false) String []except){
 
-        return "";
+            String[] include_numbers = include;
+            String[] except_numbers = except;
+
+            mainPageService.pick_a_number(include_numbers,except_numbers);
+
+
+
+        return include_numbers ;
         }
 
 }

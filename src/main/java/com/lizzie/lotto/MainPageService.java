@@ -37,5 +37,4 @@ public class MainPageService {
         return sb.toString();
     }
 
-
 }
