@@ -54,146 +54,182 @@
                 number[i].style="background-color:#ff0000";
             }
         }
-    </script>
+</script>
+
+<script>
+    function count_check(obj){
+        var chkBox = document.getElementsByName("include");
+        var chkCnt = 0;
+        for(var i=0; i<chkBox.length; i++){
+            if(chkBox[i].checked){
+                chkCnt++;
+            }
+        }
+        if(chkCnt > 5){
+            alert("최대 5개까지 선택할 수 있습니다.");
+            obj.checked=false;
+            return false;
+        }
+    }
+
+
+    function count_check2(obj){
+        var chkBox = document.getElementsByName("except");
+        var chkCnt = 0;
+        for(var i=0; i<chkBox.length; i++){
+            if(chkBox[i].checked){
+                chkCnt++;
+            }
+        }
+        if(chkCnt > 39){
+            alert("최대 39개까지 선택할 수 있습니다.");
+            obj.checked=false;
+            return false;
+        }
+    }
+
+</script>
 
 
 
+
+<form method="get" action="/make">
 
 <div style=" float:left; margin-right:20px;">
     <h4> 포함 숫자</h4>
-
-<form method="get" action="form-action.html">
-    <div>
-        <label><input type="checkbox" name="color" value="1"> 1</label>
-        <label><input type="checkbox" name="color" value="2"> 2</label>
-        <label><input type="checkbox" name="color" value="3"> 3</label>
-        <label><input type="checkbox" name="color" value="4"> 4</label>
-        <label><input type="checkbox" name="color" value="5"> 5</label>
-        <label><input type="checkbox" name="color" value="6"> 6</label>
-        <label><input type="checkbox" name="color" value="7"> 7</label>
-    </div>
-    <div>
-        <label><input type="checkbox" name="color" value="8"> 8</label>
-        <label><input type="checkbox" name="color" value="9"> 9</label>
-        <label><input type="checkbox" name="color" value="10"> 10</label>
-        <label><input type="checkbox" name="color" value="11"> 11</label>
-        <label><input type="checkbox" name="color" value="12"> 12</label>
-        <label><input type="checkbox" name="color" value="13"> 13</label>
-        <label><input type="checkbox" name="color" value="14"> 14</label>
-    </div>
-    <div>
-        <label><input type="checkbox" name="color" value="15"> 15</label>
-        <label><input type="checkbox" name="color" value="16"> 16</label>
-        <label><input type="checkbox" name="color" value="17"> 17</label>
-        <label><input type="checkbox" name="color" value="18"> 18</label>
-        <label><input type="checkbox" name="color" value="19"> 19</label>
-        <label><input type="checkbox" name="color" value="20"> 20</label>
-        <label><input type="checkbox" name="color" value="21"> 21</label>
-    </div>
-    <div>
-        <label><input type="checkbox" name="color" value="22"> 22</label>
-        <label><input type="checkbox" name="color" value="23"> 23</label>
-        <label><input type="checkbox" name="color" value="24"> 24</label>
-        <label><input type="checkbox" name="color" value="25"> 25</label>
-        <label><input type="checkbox" name="color" value="26"> 26</label>
-        <label><input type="checkbox" name="color" value="27"> 27</label>
-        <label><input type="checkbox" name="color" value="28"> 28</label>
-    </div>
-    <div>
-        <label><input type="checkbox" name="color" value="29"> 29</label>
-        <label><input type="checkbox" name="color" value="30"> 30</label>
-        <label><input type="checkbox" name="color" value="31"> 31</label>
-        <label><input type="checkbox" name="color" value="32"> 32</label>
-        <label><input type="checkbox" name="color" value="33"> 33</label>
-        <label><input type="checkbox" name="color" value="34"> 34</label>
-        <label><input type="checkbox" name="color" value="35"> 35</label>
-    </div>
-    <div>
-        <label><input type="checkbox" name="color" value="36"> 36</label>
-        <label><input type="checkbox" name="color" value="37"> 37</label>
-        <label><input type="checkbox" name="color" value="38"> 38</label>
-        <label><input type="checkbox" name="color" value="39"> 39</label>
-        <label><input type="checkbox" name="color" value="40"> 40</label>
-        <label><input type="checkbox" name="color" value="41"> 41</label>
-        <label><input type="checkbox" name="color" value="42"> 42</label>
-    </div>
-    <div>
-        <label><input type="checkbox" name="color" value="43"> 43</label>
-        <label><input type="checkbox" name="color" value="44"> 44</label>
-        <label><input type="checkbox" name="color" value="45"> 45</label>
-    </div>
-
-    <p><input type="submit" value="Submit"> <input type="reset" value="Reset"></p>
-</form>
+    <table width="400" class="checkbox">
+        <tbody>
+        <tr>
+            <td><input type="checkbox" name="include" value="1" onclick="count_check(this);"> 1</td>
+            <td><input type="checkbox" name="include" value="2" onclick="count_check(this);"> 2</td>
+            <td><input type="checkbox" name="include" value="3" onclick="count_check(this);"> 3</td>
+            <td><input type="checkbox" name="include" value="4" onclick="count_check(this);"> 4</td>
+            <td><input type="checkbox" name="include" value="5" onclick="count_check(this);"> 5</td>
+            <td><input type="checkbox" name="include" value="6" onclick="count_check(this);"> 6</td>
+            <td><input type="checkbox" name="include" value="7" onclick="count_check(this);"> 7</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" name="include" value="8" onclick="count_check(this);"> 8</td>
+            <td><input type="checkbox" name="include" value="9" onclick="count_check(this);"> 9</td>
+            <td><input type="checkbox" name="include" value="10" onclick="count_check(this);"> 10</td>
+            <td><input type="checkbox" name="include" value="11" onclick="count_check(this);"> 11</td>
+            <td><input type="checkbox" name="include" value="12" onclick="count_check(this);"> 12</td>
+            <td><input type="checkbox" name="include" value="13" onclick="count_check(this);"> 13</td>
+            <td><input type="checkbox" name="include" value="14" onclick="count_check(this);"> 14</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" name="include" value="15" onclick="count_check(this);"> 15</td>
+            <td><input type="checkbox" name="include" value="16" onclick="count_check(this);"> 16</td>
+            <td><input type="checkbox" name="include" value="17" onclick="count_check(this);"> 17</td>
+            <td><input type="checkbox" name="include" value="18" onclick="count_check(this);"> 18</td>
+            <td><input type="checkbox" name="include" value="19" onclick="count_check(this);"> 19</td>
+            <td><input type="checkbox" name="include" value="20" onclick="count_check(this);"> 20</td>
+            <td><input type="checkbox" name="include" value="21" onclick="count_check(this);"> 21</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" name="include" value="22" onclick="count_check(this);"> 22</td>
+            <td><input type="checkbox" name="include" value="23" onclick="count_check(this);"> 23</td>
+            <td><input type="checkbox" name="include" value="24" onclick="count_check(this);"> 24</td>
+            <td><input type="checkbox" name="include" value="25" onclick="count_check(this);"> 25</td>
+            <td><input type="checkbox" name="include" value="26" onclick="count_check(this);"> 26</td>
+            <td><input type="checkbox" name="include" value="27" onclick="count_check(this);"> 27</td>
+            <td><input type="checkbox" name="include" value="28" onclick="count_check(this);"> 28</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" name="include" value="29" onclick="count_check(this);"> 29</td>
+            <td><input type="checkbox" name="include" value="30" onclick="count_check(this);"> 30</td>
+            <td><input type="checkbox" name="include" value="31" onclick="count_check(this);"> 31</td>
+            <td><input type="checkbox" name="include" value="32" onclick="count_check(this);"> 32</td>
+            <td><input type="checkbox" name="include" value="33" onclick="count_check(this);"> 33</td>
+            <td><input type="checkbox" name="include" value="34" onclick="count_check(this);"> 34</td>
+            <td><input type="checkbox" name="include" value="35" onclick="count_check(this);"> 35</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" name="include" value="36" onclick="count_check(this);"> 36</td>
+            <td><input type="checkbox" name="include" value="37" onclick="count_check(this);"> 37</td>
+            <td><input type="checkbox" name="include" value="38" onclick="count_check(this);"> 38</td>
+            <td><input type="checkbox" name="include" value="39" onclick="count_check(this);"> 39</td>
+            <td><input type="checkbox" name="include" value="40" onclick="count_check(this);"> 40</td>
+            <td><input type="checkbox" name="include" value="41" onclick="count_check(this);"> 41</td>
+            <td><input type="checkbox" name="include" value="42" onclick="count_check(this);"> 42</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" name="include" value="43" onclick="count_check(this);"> 43</td>
+            <td><input type="checkbox" name="include" value="44" onclick="count_check(this);"> 44</td>
+            <td><input type="checkbox" name="include" value="45" onclick="count_check(this);"> 45</td>
+        </tr>
+    </tbody>
+    </table>
 </div>
 
 <div style=" float:left;">
     <h4> 제외 숫자</h4>
 
-<form method="get" action="form-action.html">
-    <div>
-        <label><input type="checkbox" name="color" value="1"> 1</label>
-        <label><input type="checkbox" name="color" value="2"> 2</label>
-        <label><input type="checkbox" name="color" value="3"> 3</label>
-        <label><input type="checkbox" name="color" value="4"> 4</label>
-        <label><input type="checkbox" name="color" value="5"> 5</label>
-        <label><input type="checkbox" name="color" value="6"> 6</label>
-        <label><input type="checkbox" name="color" value="7"> 7</label>
-    </div>
-    <div>
-        <label><input type="checkbox" name="color" value="8"> 8</label>
-        <label><input type="checkbox" name="color" value="9"> 9</label>
-        <label><input type="checkbox" name="color" value="10"> 10</label>
-        <label><input type="checkbox" name="color" value="11"> 11</label>
-        <label><input type="checkbox" name="color" value="12"> 12</label>
-        <label><input type="checkbox" name="color" value="13"> 13</label>
-        <label><input type="checkbox" name="color" value="14"> 14</label>
-    </div>
-    <div>
-        <label><input type="checkbox" name="color" value="15"> 15</label>
-        <label><input type="checkbox" name="color" value="16"> 16</label>
-        <label><input type="checkbox" name="color" value="17"> 17</label>
-        <label><input type="checkbox" name="color" value="18"> 18</label>
-        <label><input type="checkbox" name="color" value="19"> 19</label>
-        <label><input type="checkbox" name="color" value="20"> 20</label>
-        <label><input type="checkbox" name="color" value="21"> 21</label>
-    </div>
-    <div>
-        <label><input type="checkbox" name="color" value="22"> 22</label>
-        <label><input type="checkbox" name="color" value="23"> 23</label>
-        <label><input type="checkbox" name="color" value="24"> 24</label>
-        <label><input type="checkbox" name="color" value="25"> 25</label>
-        <label><input type="checkbox" name="color" value="26"> 26</label>
-        <label><input type="checkbox" name="color" value="27"> 27</label>
-        <label><input type="checkbox" name="color" value="28"> 28</label>
-    </div>
-    <div>
-        <label><input type="checkbox" name="color" value="29"> 29</label>
-        <label><input type="checkbox" name="color" value="30"> 30</label>
-        <label><input type="checkbox" name="color" value="31"> 31</label>
-        <label><input type="checkbox" name="color" value="32"> 32</label>
-        <label><input type="checkbox" name="color" value="33"> 33</label>
-        <label><input type="checkbox" name="color" value="34"> 34</label>
-        <label><input type="checkbox" name="color" value="35"> 35</label>
-    </div>
-    <div>
-        <label><input type="checkbox" name="color" value="36"> 36</label>
-        <label><input type="checkbox" name="color" value="37"> 37</label>
-        <label><input type="checkbox" name="color" value="38"> 38</label>
-        <label><input type="checkbox" name="color" value="39"> 39</label>
-        <label><input type="checkbox" name="color" value="40"> 40</label>
-        <label><input type="checkbox" name="color" value="41"> 41</label>
-        <label><input type="checkbox" name="color" value="42"> 42</label>
-    </div>
-    <div>
-        <label><input type="checkbox" name="color" value="43"> 43</label>
-        <label><input type="checkbox" name="color" value="44"> 44</label>
-        <label><input type="checkbox" name="color" value="45"> 45</label>
-    </div>
-
+    <table width="400" class="checkbox">
+        <tbody>
+        <tr>
+            <td><input type="checkbox" name="except" value="1" onclick="count_check2(this);"> 1</td>
+            <td><input type="checkbox" name="except" value="2" onclick="count_check2(this);"> 2</td>
+            <td><input type="checkbox" name="except" value="3" onclick="count_check2(this);"> 3</td>
+            <td><input type="checkbox" name="except" value="4" onclick="count_check2(this);"> 4</td>
+            <td><input type="checkbox" name="except" value="5" onclick="count_check2(this);"> 5</td>
+            <td><input type="checkbox" name="except" value="6" onclick="count_check2(this);"> 6</td>
+            <td><input type="checkbox" name="except" value="7" onclick="count_check2(this);"> 7</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" name="except" value="8" onclick="count_check2(this);"> 8</td>
+            <td><input type="checkbox" name="except" value="9" onclick="count_check2(this);"> 9</td>
+            <td><input type="checkbox" name="except" value="10" onclick="count_check2(this);"> 10</td>
+            <td><input type="checkbox" name="except" value="11" onclick="count_check2(this);"> 11</td>
+            <td><input type="checkbox" name="except" value="12" onclick="count_check2(this);"> 12</td>
+            <td><input type="checkbox" name="except" value="13" onclick="count_check2(this);"> 13</td>
+            <td><input type="checkbox" name="except" value="14" onclick="count_check2(this);"> 14</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" name="except" value="15" onclick="count_check2(this);"> 15</td>
+            <td><input type="checkbox" name="except" value="16" onclick="count_check2(this);"> 16</td>
+            <td><input type="checkbox" name="except" value="17" onclick="count_check2(this);"> 17</td>
+            <td><input type="checkbox" name="except" value="18" onclick="count_check2(this);"> 18</td>
+            <td><input type="checkbox" name="except" value="19" onclick="count_check2(this);"> 19</td>
+            <td><input type="checkbox" name="except" value="20" onclick="count_check2(this);"> 20</td>
+            <td><input type="checkbox" name="except" value="21" onclick="count_check2(this);"> 21</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" name="except" value="22" onclick="count_check2(this);"> 22</td>
+            <td><input type="checkbox" name="except" value="23" onclick="count_check2(this);"> 23</td>
+            <td><input type="checkbox" name="except" value="24" onclick="count_check2(this);"> 24</td>
+            <td><input type="checkbox" name="except" value="25" onclick="count_check2(this);"> 25</td>
+            <td><input type="checkbox" name="except" value="26" onclick="count_check2(this);"> 26</td>
+            <td><input type="checkbox" name="except" value="27" onclick="count_check2(this);"> 27</td>
+            <td><input type="checkbox" name="except" value="28" onclick="count_check2(this);"> 28</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" name="except" value="29" onclick="count_check2(this);"> 29</td>
+            <td><input type="checkbox" name="except" value="30" onclick="count_check2(this);"> 30</td>
+            <td><input type="checkbox" name="except" value="31" onclick="count_check2(this);"> 31</td>
+            <td><input type="checkbox" name="except" value="32" onclick="count_check2(this);"> 32</td>
+            <td><input type="checkbox" name="except" value="33" onclick="count_check2(this);"> 33</td>
+            <td><input type="checkbox" name="except" value="34" onclick="count_check2(this);"> 34</td>
+            <td><input type="checkbox" name="except" value="35" onclick="count_check2(this);"> 35</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" name="except" value="36" onclick="count_check2(this);"> 36</td>
+            <td><input type="checkbox" name="except" value="37" onclick="count_check2(this);"> 37</td>
+            <td><input type="checkbox" name="except" value="38" onclick="count_check2(this);"> 38</td>
+            <td><input type="checkbox" name="except" value="39" onclick="count_check2(this);"> 39</td>
+            <td><input type="checkbox" name="except" value="40" onclick="count_check2(this);"> 40</td>
+            <td><input type="checkbox" name="except" value="41" onclick="count_check2(this);"> 41</td>
+            <td><input type="checkbox" name="except" value="42" onclick="count_check2(this);"> 42</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" name="except" value="43" onclick="count_check2(this);"> 43</td>
+            <td><input type="checkbox" name="except" value="44" onclick="count_check2(this);"> 44</td>
+            <td><input type="checkbox" name="except" value="45" onclick="count_check2(this);"> 45</td>
+        </tr>
+        </tbody>
+    </table>
     <p><input type="submit" value="Submit"> <input type="reset" value="Reset"></p>
-</form>
 </div>
 
-
+</form>
 </body>

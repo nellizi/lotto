@@ -8,6 +8,8 @@ import org.json.simple.parser.JSONParser;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.io.IOException;
 
@@ -49,5 +51,12 @@ public class MainPageController {
             return numbers;
         }
 
+
+        @ResponseBody
+        @GetMapping("/make")
+        public String makenumber(){
+
+        return "";
+        }
 
 }
