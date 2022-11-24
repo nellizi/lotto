@@ -55,17 +55,17 @@ public class MainPageController {
 
         @ResponseBody
         @GetMapping("/make")
-        public String[] makenumber(@RequestParam Map<String,String> params, @RequestParam(value="include", required=false) String []include,
+        public int[] makenumber(@RequestParam Map<String,String> params, @RequestParam(value="include", required=false) String []include,
                                    @RequestParam(value="except", required=false) String []except){
 
             String[] include_numbers = include;
             String[] except_numbers = except;
 
-            mainPageService.pick_a_number(include_numbers,except_numbers);
+            int[] numbers = mainPageService.pick_a_number(include_numbers,except_numbers);
 
 
 
-        return include_numbers ;
+        return numbers ;
         }
 
 }
