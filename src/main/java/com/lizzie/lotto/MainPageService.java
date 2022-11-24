@@ -42,14 +42,14 @@ public class MainPageService {
         int indexNum = 0;
 
         if(include_numbers != null){
-            indexNum = 6 - include_numbers.length;
+            indexNum = include_numbers.length;
 
             for(int k = 0; k<include_numbers.length; k++){
                 pickedNumber[k] = Integer.parseInt(include_numbers[k]);
             }
         }
 
-        for(int i =indexNum ; i< 6; ){
+        for(int i = indexNum ; i< 6; ){
             int num = (int)(Math.random() * 45) + 1;	// 1~46까지의 임의의 수를 받는다.
                 if(contain(num,except_numbers)){
                    // 한번 더 반복해야 함

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Map;
 
@@ -56,12 +57,26 @@ public class MainPageController {
         @ResponseBody
         @GetMapping("/make")
         public int[] makenumber(@RequestParam Map<String,String> params, @RequestParam(value="include", required=false) String []include,
-                                   @RequestParam(value="except", required=false) String []except){
+                                @RequestParam(value="except", required=false) String []except, HttpServletResponse response) throws IOException {
 
             String[] include_numbers = include;
             String[] except_numbers = except;
 
-            int[] numbers = mainPageService.pick_a_number(include_numbers,except_numbers);
+//            for(int i = 0; i < include.length ; i++) {
+//                for(int j = 0; j< except.length; j++) {
+//
+//                    if(include[i].equals(except[j]) ) {
+//                        response.setContentType("text/html; charset=utf-8");
+//                        response.getWriter().print("<script>alert('로그인 후 이용해주세요');  location.href = \"/member/login\";</script>");
+//
+//
+//                    }
+//
+//                }
+//
+//            }
+
+            int[] numbers = mainPageService.pick_a_number(include,except);
 
 
 
