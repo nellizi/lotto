@@ -39,13 +39,17 @@ public class MainPageService {
     }
     public int[] pick_a_number(String[] include_numbers, String[] except_numbers) {
         int pickedNumber[] = new int[6];
-        int include_length = 0;
+        int indexNum = 0;
 
         if(include_numbers != null){
-            include_length = include_numbers.length;
+            indexNum = 6 - include_numbers.length;
+
+            for(int k = 0; k<include_numbers.length; k++){
+                pickedNumber[k] = Integer.parseInt(include_numbers[k]);
+            }
         }
 
-        for(int i = 0; i < 6-include_length; i++) {
+        for(int i =indexNum ; i< 6; ){
             int num = (int)(Math.random() * 45) + 1;	// 1~46까지의 임의의 수를 받는다.
                 if(contain(num,except_numbers)){
                    // 한번 더 반복해야 함
@@ -58,6 +62,7 @@ public class MainPageService {
                     break;
                 }
             }
+            i++;
         }
         return pickedNumber;
     }
