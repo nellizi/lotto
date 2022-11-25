@@ -7,11 +7,8 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Map;
 
@@ -55,26 +52,13 @@ public class MainPageController {
 
 
         @ResponseBody
-        @GetMapping("/make")
+        @PostMapping("/make")
         public int[] makenumber(@RequestParam Map<String,String> params, @RequestParam(value="include", required=false) String []include,
-                                @RequestParam(value="except", required=false) String []except, HttpServletResponse response) throws IOException {
+                                @RequestParam(value="except", required=false) String []except) {
 
             String[] include_numbers = include;
             String[] except_numbers = except;
 
-//            for(int i = 0; i < include.length ; i++) {
-//                for(int j = 0; j< except.length; j++) {
-//
-//                    if(include[i].equals(except[j]) ) {
-//                        response.setContentType("text/html; charset=utf-8");
-//                        response.getWriter().print("<script>alert('로그인 후 이용해주세요');  location.href = \"/member/login\";</script>");
-//
-//
-//                    }
-//
-//                }
-//
-//            }
 
             int[] numbers = mainPageService.pick_a_number(include,except);
 

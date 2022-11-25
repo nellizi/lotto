@@ -15,7 +15,7 @@ public class MainPageService {
     public String getApi() throws IOException {
         String urladress = "https://www.dhlottery.co.kr/common.do?method=getLottoNumber&drwNo=";
         String number = "861";
-        String adress = urladress+number;
+        String adress = urladress + number;
 
         URL url = new URL(adress);
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -23,7 +23,7 @@ public class MainPageService {
         conn.setRequestProperty("Content-type", "application/json");
         conn.setDoOutput(true);
 
-         StringBuffer sb = null;
+        StringBuffer sb = null;
         try {
             sb = new StringBuffer();
             BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"));
@@ -37,27 +37,27 @@ public class MainPageService {
 
         return sb.toString();
     }
+
     public int[] pick_a_number(String[] include_numbers, String[] except_numbers) {
         int pickedNumber[] = new int[6];
         int indexNum = 0;
 
-        if(include_numbers != null){
+        if (include_numbers != null) {
             indexNum = include_numbers.length;
 
-            for(int k = 0; k<include_numbers.length; k++){
+            for (int k = 0; k < include_numbers.length; k++) {
                 pickedNumber[k] = Integer.parseInt(include_numbers[k]);
             }
         }
 
-        for(int i = indexNum ; i< 6; ){
-            int num = (int)(Math.random() * 45) + 1;	// 1~46까지의 임의의 수를 받는다.
-                if(contain(num,except_numbers)){
-                   // 한번 더 반복해야 함
-                    continue;
-                }
+        for (int i = indexNum; i < 6; ) {
+            int num = (int) (Math.random() * 45) + 1;    // 1~46까지의 임의의 수를 받는다.
+            if (contain(num, except_numbers)) {
+                continue;
+            }
             pickedNumber[i] = num;
-            for(int j = 0; j < i; j++) {	// 중복된 번호가 있으면 이전 포문으로 돌아가 다시 시행한다.
-                if(pickedNumber[i] == pickedNumber[j]  ) {
+            for (int j = 0; j < i; j++) {    // 중복된 번호가 있으면 이전 포문으로 돌아가 다시 시행한다.
+                if (pickedNumber[i] == pickedNumber[j]) {
                     i--;
                     break;
                 }
@@ -68,10 +68,12 @@ public class MainPageService {
     }
 
     private boolean contain(int num, String[] except_numbers) {
-        if(except_numbers == null){
+        if (except_numbers == null) {
             return false;
         }
-        String number = num+"";
+        String number = num + "";
         return Arrays.asList(except_numbers).contains(number);
     }
+
 }
+
