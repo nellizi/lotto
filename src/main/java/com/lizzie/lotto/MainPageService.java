@@ -9,6 +9,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.Date;
 
@@ -18,14 +19,27 @@ public class MainPageService {
     public String getApi() throws IOException {
 
         String urladress = "https://www.dhlottery.co.kr/common.do?method=getLottoNumber&drwNo=";
-        String number = "";
-        int turn;
-        String date = DateUtil.getDate(2022, 11, 28);
+        int turn = 1043;
+//        String date = DateUtil.getDate(2022, 11, 28);
+//
+//        if(LocalDate.now().toString() .equals(date)){
+//            turn = 1043;
+//            number = turn+"";
+//        }
 
-        if(LocalDate.now().toString() .equals(date)){
-            turn = 1043;
-            number = turn+"";
-        }
+        //경과 일수 구하기
+
+        LocalDateTime toDay = LocalDateTime.now();
+
+        Date nowDate = java.sql.Timestamp.valueOf(toDay);
+        Date settedDate = DateUtil.getRealDate(2021,10,9);
+
+        long diffSec = (nowDate.getTime() - settedDate.getTime()) / 1000; //초 차이
+        int diffDays = (int) (diffSec / (24 * 60 * 60));
+
+         turn = 984 + diffDays/7;
+
+        String number = turn+"";
 
 
         String adress = urladress + number;
@@ -47,6 +61,11 @@ public class MainPageService {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+
+
+
+
 
         return sb.toString();
     }

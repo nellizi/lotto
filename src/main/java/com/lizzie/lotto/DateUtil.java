@@ -17,6 +17,25 @@ public class DateUtil {
         Date date = new Date(calendar.getTimeInMillis());
 
         dateFormat.format(date);
+
         return dateFormat.format(date);
     }
+
+    public static Date getRealDate(int y, int m, int d){
+
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(y,m-1,d);
+
+        Date date = new Date(calendar.getTimeInMillis());
+
+
+
+        return date;
+    }
+
+
+
+
 }
