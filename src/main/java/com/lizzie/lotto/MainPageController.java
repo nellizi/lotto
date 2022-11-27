@@ -10,6 +10,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -21,19 +24,16 @@ public class MainPageController {
     @GetMapping("/main")
     public String main(Model model) throws IOException, ParseException, org.json.simple.parser.ParseException {
 
-       String data =  mainPageService.getApi();
+       String data =  mainPageService.getApi();   //당첨번호 불러오기
         NumberEntity numbers = json(data);
 
-        model.addAttribute("numbers", numbers);
-
-        System.out.println(numbers.times);
+        model.addAttribute("numbers", numbers);  //numbers = 당첨번호
 
         return "/main";
     }
 
     public NumberEntity json(String data) throws ParseException, org.json.simple.parser.ParseException {
 
-            // JSONParser로 JSONObject 객체
         JSONObject objData = (JSONObject)new JSONParser().parse(data);
 
         int times =  Integer.parseInt ( objData.get("drwNo").toString() );
@@ -51,21 +51,38 @@ public class MainPageController {
         }
 
 
-        @ResponseBody
         @PostMapping("/make")
-        public int[] makenumber(@RequestParam Map<String,String> params, @RequestParam(value="include", required=false) String []include,
-                                @RequestParam(value="except", required=false) String []except) {
+        public String makenumber(@RequestParam Map<String,String> params, @RequestParam(value="include", required=false) String []include,
+                                      @RequestParam(value="except", required=false) String []except, Model model) {
 
             String[] include_numbers = include;
             String[] except_numbers = except;
 
+            List<PickedNumberEntity> pickedNumberEntityList = new ArrayList<>();
 
-            int[] numbers = mainPageService.pick_a_number(include,except);
-
-            for(int i=0; i<numbers.length; i++) {
-                System.out.println(numbers[i]);
+            for(int i = 0; i<5; i++) {
+                int[] numbers = mainPageService.pick_a_number(include, except);
+                Arrays.sort(numbers);
+                PickedNumberEntity pickedNumberEntity = new PickedNumberEntity(numbers[0],numbers[1],numbers[2],numbers[3],numbers[4],numbers[5]);
+                pickedNumberEntityList.add(pickedNumberEntity);
             }
-        return numbers ;
+
+            model.addAttribute("pickedNumberEntityList",pickedNumberEntityList);
+
+            System.out.println(pickedNumberEntityList.get(0));
+
+            return "/main :: #resultDiv";
+
         }
+
+    @PostMapping("/send")
+    public String ajaxHome(@RequestParam Map<String,String> params, @RequestParam(value="include", required=false) String []include,
+    @RequestParam(value="except", required=false) String []except, Model model){
+
+        String msg = "메세지 확인";
+        model.addAttribute("msg",msg);
+        return "/main :: #resultDiv";
+    }
+
 
 }

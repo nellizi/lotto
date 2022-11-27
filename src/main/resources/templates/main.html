@@ -1,4 +1,4 @@
-<html xmlns:th="http://thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<html xmlns:th="http://thymeleaf.org" >
 
 <head>
     <link rel="stylesheet" type="text/css" href="style.css">
@@ -96,24 +96,39 @@
         }
     }
 
-function submit2(){
-
-var formValues = $("form[name=checked_number]").serialize() ;
-
-   $.ajax({
-      type : "POST",
-      url : "/make?",
-      data : formValues,
-            dataType : 'json',
-      success : function(data){
-         alert(data);
-      }
-   })
+function submit1(){
+    alert("실행");
+    var formValues = $("form[name=checked_number]").serialize() ;
+    $.ajax({
+        url: "/make",
+        type: "POST",
+        data: c,
+        dataType : 'json',
+     }).done(function (data) {
+        $('#resultDiv').replaceWith(data);
+    });
 }
+
+
+function submit2(){
+    alert("실행");
+    var formValues = $("form[name=checked_number]").serialize() ;
+       $.ajax({
+                    url: "/make",
+                    data: formValues,
+                    type: 'POST',
+                }).done(function (data){
+                    $("#resultDiv").replaceWith(data);
+                });
+}
+
+
+
+
+
 
     function reset_disabled(){
 
-        alert("되나?");
         const disabled = document.getElementsByName('except');
 
         disabled.forEach((checkbox) => {
@@ -263,5 +278,21 @@ var formValues = $("form[name=checked_number]").serialize() ;
 
     <p><input type="button" value="Submit" onclick="submit2();"> <input  type="reset" value="Reset" onclick="reset_disabled();"></p>
 </form>
-</body>
 
+
+<div id="resultDiv">
+
+   <p th:if="${numbersList}!=null" ></p>
+    <div th:each="pickedNumberEntity:${pickedNumberEntityList}">
+        <span class="lottocircle" th:text="${pickedNumberEntity.no1}"></span>
+        <span class="lottocircle" th:text="${pickedNumberEntity.no2}"></span>
+        <span class="lottocircle" th:text="${pickedNumberEntity.no3}"></span>
+        <span class="lottocircle" th:text="${pickedNumberEntity.no4}"></span>
+        <span class="lottocircle" th:text="${pickedNumberEntity.no5}"></span>
+        <span class="lottocircle" th:text="${pickedNumberEntity.no6}"></span>
+    </div>
+</div>
+
+
+
+</body>
