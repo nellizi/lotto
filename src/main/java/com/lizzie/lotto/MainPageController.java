@@ -62,8 +62,9 @@ public class MainPageController {
 
             int[] numbers = mainPageService.pick_a_number(include,except);
 
-
-
+            for(int i=0; i<numbers.length; i++) {
+                System.out.println(numbers[i]);
+            }
         return numbers ;
         }
 

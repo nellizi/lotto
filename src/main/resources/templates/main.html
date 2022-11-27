@@ -1,4 +1,4 @@
-<html xmlns:th="http://thymeleaf.org" >
+<html xmlns:th="http://thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 
 <head>
     <link rel="stylesheet" type="text/css" href="style.css">
@@ -111,7 +111,19 @@ var formValues = $("form[name=checked_number]").serialize() ;
    })
 }
 
+    function reset_disabled(){
+
+        alert("되나?");
+        const disabled = document.getElementsByName('except');
+
+        disabled.forEach((checkbox) => {
+        checkbox.disabled = false;
+        })
+    }
+
 </script>
+
+
 
 <form method="get" action="/make" name="checked_number"  >
 
@@ -184,7 +196,6 @@ var formValues = $("form[name=checked_number]").serialize() ;
 
 <div style=" float:left;">
     <h4> 제외 숫자</h4>
-
     <table width="400" class="checkbox">
         <tbody>
         <tr>
@@ -197,60 +208,60 @@ var formValues = $("form[name=checked_number]").serialize() ;
             <td><input type="checkbox" name="except" value="7" onclick="count_check2(this);" id="7"> 7</td>
         </tr>
         <tr>
-            <td><input type="checkbox" name="except" value="8" onclick="count_check2(this);"> 8</td>
-            <td><input type="checkbox" name="except" value="9" onclick="count_check2(this);"> 9</td>
-            <td><input type="checkbox" name="except" value="10" onclick="count_check2(this);"> 10</td>
-            <td><input type="checkbox" name="except" value="11" onclick="count_check2(this);"> 11</td>
-            <td><input type="checkbox" name="except" value="12" onclick="count_check2(this);"> 12</td>
-            <td><input type="checkbox" name="except" value="13" onclick="count_check2(this);"> 13</td>
-            <td><input type="checkbox" name="except" value="14" onclick="count_check2(this);"> 14</td>
+            <td><input type="checkbox" name="except" value="8" onclick="count_check2(this);" id="8"> 8</td>
+            <td><input type="checkbox" name="except" value="9" onclick="count_check2(this);" id="9"> 9</td>
+            <td><input type="checkbox" name="except" value="10" onclick="count_check2(this);" id="10"> 10</td>
+            <td><input type="checkbox" name="except" value="11" onclick="count_check2(this);" id="11"> 11</td>
+            <td><input type="checkbox" name="except" value="12" onclick="count_check2(this);" id="12"> 12</td>
+            <td><input type="checkbox" name="except" value="13" onclick="count_check2(this);" id="13"> 13</td>
+            <td><input type="checkbox" name="except" value="14" onclick="count_check2(this);" id="14"> 14</td>
         </tr>
         <tr>
-            <td><input type="checkbox" name="except" value="15" onclick="count_check2(this);"> 15</td>
-            <td><input type="checkbox" name="except" value="16" onclick="count_check2(this);"> 16</td>
-            <td><input type="checkbox" name="except" value="17" onclick="count_check2(this);"> 17</td>
-            <td><input type="checkbox" name="except" value="18" onclick="count_check2(this);"> 18</td>
-            <td><input type="checkbox" name="except" value="19" onclick="count_check2(this);"> 19</td>
-            <td><input type="checkbox" name="except" value="20" onclick="count_check2(this);"> 20</td>
-            <td><input type="checkbox" name="except" value="21" onclick="count_check2(this);"> 21</td>
+            <td><input type="checkbox" name="except" value="15" onclick="count_check2(this);" id="15"> 15</td>
+            <td><input type="checkbox" name="except" value="16" onclick="count_check2(this);" id="16"> 16</td>
+            <td><input type="checkbox" name="except" value="17" onclick="count_check2(this);" id="17"> 17</td>
+            <td><input type="checkbox" name="except" value="18" onclick="count_check2(this);" id="18"> 18</td>
+            <td><input type="checkbox" name="except" value="19" onclick="count_check2(this);" id="19"> 19</td>
+            <td><input type="checkbox" name="except" value="20" onclick="count_check2(this);" id="20"> 20</td>
+            <td><input type="checkbox" name="except" value="21" onclick="count_check2(this);" id="21"> 21</td>
         </tr>
         <tr>
-            <td><input type="checkbox" name="except" value="22" onclick="count_check2(this);"> 22</td>
-            <td><input type="checkbox" name="except" value="23" onclick="count_check2(this);"> 23</td>
-            <td><input type="checkbox" name="except" value="24" onclick="count_check2(this);"> 24</td>
-            <td><input type="checkbox" name="except" value="25" onclick="count_check2(this);"> 25</td>
-            <td><input type="checkbox" name="except" value="26" onclick="count_check2(this);"> 26</td>
-            <td><input type="checkbox" name="except" value="27" onclick="count_check2(this);"> 27</td>
-            <td><input type="checkbox" name="except" value="28" onclick="count_check2(this);"> 28</td>
+            <td><input type="checkbox" name="except" value="22" onclick="count_check2(this);" id="22"> 22</td>
+            <td><input type="checkbox" name="except" value="23" onclick="count_check2(this);" id="23"> 23</td>
+            <td><input type="checkbox" name="except" value="24" onclick="count_check2(this);" id="24"> 24</td>
+            <td><input type="checkbox" name="except" value="25" onclick="count_check2(this);" id="25"> 25</td>
+            <td><input type="checkbox" name="except" value="26" onclick="count_check2(this);" id="26"> 26</td>
+            <td><input type="checkbox" name="except" value="27" onclick="count_check2(this);" id="27"> 27</td>
+            <td><input type="checkbox" name="except" value="28" onclick="count_check2(this);" id="28"> 28</td>
         </tr>
         <tr>
-            <td><input type="checkbox" name="except" value="29" onclick="count_check2(this);"> 29</td>
-            <td><input type="checkbox" name="except" value="30" onclick="count_check2(this);"> 30</td>
-            <td><input type="checkbox" name="except" value="31" onclick="count_check2(this);"> 31</td>
-            <td><input type="checkbox" name="except" value="32" onclick="count_check2(this);"> 32</td>
-            <td><input type="checkbox" name="except" value="33" onclick="count_check2(this);"> 33</td>
-            <td><input type="checkbox" name="except" value="34" onclick="count_check2(this);"> 34</td>
-            <td><input type="checkbox" name="except" value="35" onclick="count_check2(this);"> 35</td>
+            <td><input type="checkbox" name="except" value="29" onclick="count_check2(this);" id="29"> 29</td>
+            <td><input type="checkbox" name="except" value="30" onclick="count_check2(this);" id="30"> 30</td>
+            <td><input type="checkbox" name="except" value="31" onclick="count_check2(this);" id="31"> 31</td>
+            <td><input type="checkbox" name="except" value="32" onclick="count_check2(this);" id="32"> 32</td>
+            <td><input type="checkbox" name="except" value="33" onclick="count_check2(this);" id="33"> 33</td>
+            <td><input type="checkbox" name="except" value="34" onclick="count_check2(this);" id="34"> 34</td>
+            <td><input type="checkbox" name="except" value="35" onclick="count_check2(this);" id="35"> 35</td>
         </tr>
         <tr>
-            <td><input type="checkbox" name="except" value="36" onclick="count_check2(this);"> 36</td>
-            <td><input type="checkbox" name="except" value="37" onclick="count_check2(this);"> 37</td>
-            <td><input type="checkbox" name="except" value="38" onclick="count_check2(this);"> 38</td>
-            <td><input type="checkbox" name="except" value="39" onclick="count_check2(this);"> 39</td>
-            <td><input type="checkbox" name="except" value="40" onclick="count_check2(this);"> 40</td>
-            <td><input type="checkbox" name="except" value="41" onclick="count_check2(this);"> 41</td>
-            <td><input type="checkbox" name="except" value="42" onclick="count_check2(this);"> 42</td>
+            <td><input type="checkbox" name="except" value="36" onclick="count_check2(this);" id="36"> 36</td>
+            <td><input type="checkbox" name="except" value="37" onclick="count_check2(this);" id="37"> 37</td>
+            <td><input type="checkbox" name="except" value="38" onclick="count_check2(this);" id="38"> 38</td>
+            <td><input type="checkbox" name="except" value="39" onclick="count_check2(this);" id="39"> 39</td>
+            <td><input type="checkbox" name="except" value="40" onclick="count_check2(this);" id="40"> 40</td>
+            <td><input type="checkbox" name="except" value="41" onclick="count_check2(this);" id="41"> 41</td>
+            <td><input type="checkbox" name="except" value="42" onclick="count_check2(this);" id="42"> 42</td>
         </tr>
         <tr>
-            <td><input type="checkbox" name="except" value="43" onclick="count_check2(this);"> 43</td>
-            <td><input type="checkbox" name="except" value="44" onclick="count_check2(this);"> 44</td>
-            <td><input type="checkbox" name="except" value="45" onclick="count_check2(this);"> 45</td>
+            <td><input type="checkbox" name="except" value="43" onclick="count_check2(this);" id="43"> 43</td>
+            <td><input type="checkbox" name="except" value="44" onclick="count_check2(this);" id="44"> 44</td>
+            <td><input type="checkbox" name="except" value="45" onclick="count_check2(this);" id="45"> 45</td>
         </tr>
         </tbody>
     </table>
-    <p><input type="button" value="Submit" onclick="submit2()"> <input type="reset" value="Reset"></p>
 </div>
 
+    <p><input type="button" value="Submit" onclick="submit2();"> <input  type="reset" value="Reset" onclick="reset_disabled();"></p>
 </form>
 </body>
 
