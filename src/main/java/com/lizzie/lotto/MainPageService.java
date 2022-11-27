@@ -1,5 +1,6 @@
 package com.lizzie.lotto;
 
+import org.attoparser.trace.MarkupTraceEvent;
 import org.springframework.stereotype.Service;
 
 import java.io.BufferedReader;
@@ -7,14 +8,26 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.Arrays;
+import java.util.Date;
 
 @Service
 public class MainPageService {
 
     public String getApi() throws IOException {
+
         String urladress = "https://www.dhlottery.co.kr/common.do?method=getLottoNumber&drwNo=";
-        String number = "861";
+        String number = "";
+        int turn;
+        String date = DateUtil.getDate(2022, 11, 28);
+
+        if(LocalDate.now().toString() .equals(date)){
+            turn = 1043;
+            number = turn+"";
+        }
+
+
         String adress = urladress + number;
 
         URL url = new URL(adress);

@@ -40,21 +40,21 @@
 </div>
 
 <script>
-        var number = document.getElementsByClassName("lottocircle");
-        for (var i = 0 ; i < number.length ; i++) {
-            if(parseInt(number[i].textContent)>=40){
-                number[i].style="background-color:#8b00ff";
-            }else if(parseInt(number[i].textContent)>=30){
-                number[i].style="background-color:#146eb4";
-            }else if(parseInt(number[i].textContent)>=20){
-                number[i].style="background-color:#c1d82f";
-            }else if(parseInt(number[i].textContent)>=10){
-                number[i].style="background-color:#fbb034";
-            }
-            else{
-                number[i].style="background-color:#ff0000";
-            }
-        }
+<!--        var number = document.getElementsByClassName("lottocircle");-->
+<!--        for (var i = 0 ; i < number.length ; i++) {-->
+<!--            if(parseInt(number[i].textContent)>=40){-->
+<!--                number[i].style="background-color:#8b00ff";-->
+<!--            }else if(parseInt(number[i].textContent)>=30){-->
+<!--                number[i].style="background-color:#146eb4";-->
+<!--            }else if(parseInt(number[i].textContent)>=20){-->
+<!--                number[i].style="background-color:#c1d82f";-->
+<!--            }else if(parseInt(number[i].textContent)>=10){-->
+<!--                number[i].style="background-color:#fbb034";-->
+<!--            }-->
+<!--            else{-->
+<!--                number[i].style="background-color:#ff0000";-->
+<!--            }-->
+<!--        }-->
 
 
     function count_check(obj){
@@ -139,6 +139,7 @@ function submit2(){
 </script>
 
 
+<div>
 
 <form method="get" action="/make" name="checked_number"  >
 
@@ -275,24 +276,55 @@ function submit2(){
         </tbody>
     </table>
 </div>
-
     <p><input type="button" value="Submit" onclick="submit2();"> <input  type="reset" value="Reset" onclick="reset_disabled();"></p>
 </form>
 
+</div>
 
+<div>
 <div id="resultDiv">
 
-   <p th:if="${numbersList}!=null" ></p>
-    <div th:each="pickedNumberEntity:${pickedNumberEntityList}">
-        <span class="lottocircle" th:text="${pickedNumberEntity.no1}"></span>
-        <span class="lottocircle" th:text="${pickedNumberEntity.no2}"></span>
-        <span class="lottocircle" th:text="${pickedNumberEntity.no3}"></span>
-        <span class="lottocircle" th:text="${pickedNumberEntity.no4}"></span>
-        <span class="lottocircle" th:text="${pickedNumberEntity.no5}"></span>
-        <span class="lottocircle" th:text="${pickedNumberEntity.no6}"></span>
+    <div class="main">
+        <div class="numberdiv">
+            <p th:if="${numbersList}!=null" ></p>
+                <div class="numberset" th:each="pickedNumberEntity:${pickedNumberEntityList}">
+                    <div class="lottocircle"><span class="value" th:text="${pickedNumberEntity.no1}"></span></div>
+                    <div class="lottocircle"><span class="value" th:text="${pickedNumberEntity.no2}"></span></div>
+                    <div class="lottocircle"><span class="value" th:text="${pickedNumberEntity.no3}"></span></div>
+                    <div class="lottocircle"><span class="value" th:text="${pickedNumberEntity.no4}"></span></div>
+                    <div class="lottocircle"><span class="value" th:text="${pickedNumberEntity.no5}"></span></div>
+                    <div class="lottocircle"><span class="value" th:text="${pickedNumberEntity.no6}"></span></div>
+                </div>
+        </div>
     </div>
+
+</div>
 </div>
 
 
+<div class="footer">
+    <p class="name">Lizzie<br></p>
+    <div class="detail">
+        <p>blog : <a class="blog-link" href="https://lizistory.tistory.com">lizistory.tistory.com</a></p>
+        <p>#자바 #언제 해 #WEB</p>
+    </div>
+</div>
+<script>
+     var number = document.getElementsByClassName("lottocircle");
+        for (var i = 0 ; i < number.length ; i++) {
+            if(parseInt(number[i].textContent)>=40){
+                number[i].style="background-color:#8b00ff";
+            }else if(parseInt(number[i].textContent)>=30){
+                number[i].style="background-color:#146eb4";
+            }else if(parseInt(number[i].textContent)>=20){
+                number[i].style="background-color:#c1d82f";
+            }else if(parseInt(number[i].textContent)>=10){
+                number[i].style="background-color:#fbb034";
+            }
+            else{
+                number[i].style="background-color:#ff0000";
+            }
+        }
+</script>
 
 </body>

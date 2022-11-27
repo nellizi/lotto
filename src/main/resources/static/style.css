@@ -50,3 +50,27 @@
     display:table-cell;
     vertical-align: middle;
 }
+
+.footer{
+    width:100%;
+    height:100px;
+    position:absolute;
+    bottom:0;
+    text-align: center;
+    background-color: #6a737b;
+}
+.name{
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    color: #FFaa00;
+    line-height: 1.8;
+}
+p{
+    margin: 0;
+    color:white;
+}
+.blog-link{
+    text-decoration: none;
+    color:white;
+}
