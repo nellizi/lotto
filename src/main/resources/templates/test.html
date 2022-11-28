@@ -1,0 +1,373 @@
+<html xmlns:th="http://thymeleaf.org">
+<head>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+<div class="container">
+
+  <div class="top">
+    <h1> Pick Your Own Number </h1>
+  </div>
+
+
+  <div class="main">
+    <div class="numberdiv">
+      <div class="top-div">
+        <span style="text-align:center; color:red;" class="top-div-name" th:text="${numbers.times} "></span>
+        <span>회차 당첨번호</span>
+      </div>
+      <div class="numberset">
+        <div class="lottocircle"><p class="value" th:text="${numbers.no1}" ></p></div>
+        <div class="lottocircle"><p class="value" th:text="${numbers.no2}"></p></div>
+        <div class="lottocircle"><p class="value" th:text="${numbers.no3}"></p></div>
+        <div class="lottocircle"><p class="value" th:text="${numbers.no4}"></p></div>
+        <div class="lottocircle"><p class="value" th:text="${numbers.no5}"></p></div>
+        <div class="lottocircle"><p class="value" th:text="${numbers.no6}"></p></div>
+        <div class="lottocircle"><p class="value" th:text="${numbers.bonus}"></p></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+
+<!-- 번호에 따라 공 색 변화시키기 -->
+        var number = document.getElementsByClassName("lottocircle");
+
+        for (var i = 0 ; i < number.length ; i++) {
+            if(parseInt(number[i].textContent)>=40){
+                number[i].style="background-color:#8b00ff";
+            }else if(parseInt(number[i].textContent)>=30){
+                number[i].style="background-color:#146eb4";
+            }else if(parseInt(number[i].textContent)>=20){
+                number[i].style="background-color:#c1d82f";
+            }else if(parseInt(number[i].textContent)>=10){
+                number[i].style="background-color:#fbb034";
+            }
+            else{
+                number[i].style="background-color:#ff0000";
+            }
+        }
+
+<!-- 체크박스 선택 수 제한  -->
+
+    function count_check__(obj){
+        var chkBoxIn = document.getElementsByName("include");
+        var chkBoxEx = document.getElementsByName("except");
+
+        var num = obj.value;
+
+<!--  포함 선택 시 제외 disabled  -->
+
+        if(document.getElementById(num).disabled ==true){
+            document.getElementById(num).disabled =false;
+            }else{
+            document.getElementById(num).disabled =true;
+        }
+
+        if(chkBoxIn != null){
+            real_count_check(obj,chkBoxIn,5);
+        }
+
+         if(chkBoxEx != null){
+            real_count_check(obj,chkBoxEx,39);
+        }
+    }
+
+ function real_count_check(obj,chkBox,limit){
+        var chkCnt = 0;
+        var num = obj.value;
+        for(var i=0; i<chkBox.length; i++){
+            if(chkBox[i].checked){
+                chkCnt++;
+            }
+        }
+        if(chkCnt > limit){
+            alert("최대"+ limit + "개까지 선택할 수 있습니다.");
+            obj.checked=false;
+            return false;
+        }
+ }
+
+
+     function count_check(obj){
+        var chkBox = document.getElementsByName("include");
+        var chkCnt = 0;
+        var num = obj.value;
+
+        if(document.getElementById(num).disabled ==true){
+            document.getElementById(num).disabled =false;
+            }else{
+            document.getElementById(num).disabled =true;
+        }
+
+        for(var i=0; i<chkBox.length; i++){
+            if(chkBox[i].checked){
+                chkCnt++;
+            }
+        }
+        if(chkCnt > 5){
+            alert("최대 5개까지 선택할 수 있습니다.");
+            obj.checked=false;
+            return false;
+        }
+    }
+
+    function count_check2(obj){
+        var chkBox = document.getElementsByName("except");
+        var chkCnt = 0;
+        for(var i=0; i<chkBox.length; i++){
+            if(chkBox[i].checked){
+                chkCnt++;
+            }
+        }
+        if(chkCnt > 39){
+            alert("최대 39개까지 선택할 수 있습니다.");
+            obj.checked=false;
+            return false;
+        }
+    }
+
+<!--   form submit  -->
+
+function submit1(){
+    alert("실행");
+    var formValues = $("form[name=checked_number]").serialize() ;
+    $.ajax({
+        url: "/make",
+        type: "POST",
+        data: c,
+        dataType : 'json',
+     }).done(function (data) {
+        $('#resultDiv').replaceWith(data);
+    });
+}
+function submit2(){
+    alert("실행");
+    var formValues = $("form[name=checked_number]").serialize() ;
+       $.ajax({
+                    url: "/make",
+                    data: formValues,
+                    type: 'POST',
+                }).done(function (data){
+                    $("#resultDiv").replaceWith(data);
+                });
+}
+
+<!-- disabled reset  -->
+    function reset_disabled(){
+        const disabled = document.getElementsByName('except');
+        disabled.forEach((checkbox) => {
+        checkbox.disabled = false;
+        })
+    }
+</script>
+
+  <div class="middle">
+    <div class="table"  >
+      <form method="get" action="/make" name="checked_number" ><div>
+        <table  class="checkbox" >
+          <thead>
+          <tr>
+            <th colspan="7">포함 숫자</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td><input type="checkbox" name="include" value="1" onclick="count_check(this);"> 1 </td>
+            <td><input type="checkbox" name="include" value="2" onclick="count_check(this);"> 2</td>
+            <td><input type="checkbox" name="include" value="3" onclick="count_check(this);"> 3</td>
+            <td><input type="checkbox" name="include" value="4" onclick="count_check(this);"> 4</td>
+            <td><input type="checkbox" name="include" value="5" onclick="count_check(this);"> 5</td>
+            <td><input type="checkbox" name="include" value="6" onclick="count_check(this);"> 6</td>
+            <td><input type="checkbox" name="include" value="7" onclick="count_check(this);"> 7</td>
+          </tr>
+          <tr>
+            <td><input type="checkbox" name="include" value="8" onclick="count_check(this);"> 8</td>
+            <td><input type="checkbox" name="include" value="9" onclick="count_check(this);"> 9</td>
+            <td><input type="checkbox" name="include" value="10" onclick="count_check(this);"> 10</td>
+            <td><input type="checkbox" name="include" value="11" onclick="count_check(this);"> 11</td>
+            <td><input type="checkbox" name="include" value="12" onclick="count_check(this);"> 12</td>
+            <td><input type="checkbox" name="include" value="13" onclick="count_check(this);"> 13</td>
+            <td><input type="checkbox" name="include" value="14" onclick="count_check(this);"> 14</td>
+          </tr>
+          <tr>
+            <td><input type="checkbox" name="include" value="15" onclick="count_check(this);"> 15</td>
+            <td><input type="checkbox" name="include" value="16" onclick="count_check(this);"> 16</td>
+            <td><input type="checkbox" name="include" value="17" onclick="count_check(this);"> 17</td>
+            <td><input type="checkbox" name="include" value="18" onclick="count_check(this);"> 18</td>
+            <td><input type="checkbox" name="include" value="19" onclick="count_check(this);"> 19</td>
+            <td><input type="checkbox" name="include" value="20" onclick="count_check(this);"> 20</td>
+            <td><input type="checkbox" name="include" value="21" onclick="count_check(this);"> 21</td>
+          </tr>
+          <tr>
+            <td><input type="checkbox" name="include" value="22" onclick="count_check(this);"> 22</td>
+            <td><input type="checkbox" name="include" value="23" onclick="count_check(this);"> 23</td>
+            <td><input type="checkbox" name="include" value="24" onclick="count_check(this);"> 24</td>
+            <td><input type="checkbox" name="include" value="25" onclick="count_check(this);"> 25</td>
+            <td><input type="checkbox" name="include" value="26" onclick="count_check(this);"> 26</td>
+            <td><input type="checkbox" name="include" value="27" onclick="count_check(this);"> 27</td>
+            <td><input type="checkbox" name="include" value="28" onclick="count_check(this);"> 28</td>
+          </tr>
+          <tr>
+            <td><input type="checkbox" name="include" value="29" onclick="count_check(this);"> 29</td>
+            <td><input type="checkbox" name="include" value="30" onclick="count_check(this);"> 30</td>
+            <td><input type="checkbox" name="include" value="31" onclick="count_check(this);"> 31</td>
+            <td><input type="checkbox" name="include" value="32" onclick="count_check(this);"> 32</td>
+            <td><input type="checkbox" name="include" value="33" onclick="count_check(this);"> 33</td>
+            <td><input type="checkbox" name="include" value="34" onclick="count_check(this);"> 34</td>
+            <td><input type="checkbox" name="include" value="35" onclick="count_check(this);"> 35</td>
+          </tr>
+          <tr>
+            <td><input type="checkbox" name="include" value="36" onclick="count_check(this);"> 36</td>
+            <td><input type="checkbox" name="include" value="37" onclick="count_check(this);"> 37</td>
+            <td><input type="checkbox" name="include" value="38" onclick="count_check(this);"> 38</td>
+            <td><input type="checkbox" name="include" value="39" onclick="count_check(this);"> 39</td>
+            <td><input type="checkbox" name="include" value="40" onclick="count_check(this);"> 40</td>
+            <td><input type="checkbox" name="include" value="41" onclick="count_check(this);"> 41</td>
+            <td><input type="checkbox" name="include" value="42" onclick="count_check(this);"> 42</td>
+          </tr>
+          <tr>
+            <td><input type="checkbox" name="include" value="43" onclick="count_check(this);"> 43</td>
+            <td><input type="checkbox" name="include" value="44" onclick="count_check(this);"> 44</td>
+            <td><input type="checkbox" name="include" value="45" onclick="count_check(this);"> 45</td>
+          </tr>
+          </tbody>
+        </table>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <table  class="checkbox" >
+          <thead>
+          <tr>
+            <th colspan="7">제외 숫자</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td><input type="checkbox" name="except" value="1" onclick="count_check(this);" id="1"> 1</td>
+            <td><input type="checkbox" name="except" value="2" onclick="count_check(this);" id="2"> 2</td>
+            <td><input type="checkbox" name="except" value="3" onclick="count_check(this);" id="3"> 3</td>
+            <td><input type="checkbox" name="except" value="4" onclick="count_check(this);" id="4"> 4</td>
+            <td><input type="checkbox" name="except" value="5" onclick="count_check(this);" id="5"> 5</td>
+            <td><input type="checkbox" name="except" value="6" onclick="count_check(this);" id="6"> 6</td>
+            <td><input type="checkbox" name="except" value="7" onclick="count_check(this);" id="7"> 7</td>
+          </tr>
+          <tr>
+            <td><input type="checkbox" name="except" value="8" onclick="count_check(this);" id="8"> 8</td>
+            <td><input type="checkbox" name="except" value="9" onclick="count_check(this);" id="9"> 9</td>
+            <td><input type="checkbox" name="except" value="10" onclick="count_check(this);" id="10"> 10</td>
+            <td><input type="checkbox" name="except" value="11" onclick="count_check(this);" id="11"> 11</td>
+            <td><input type="checkbox" name="except" value="12" onclick="count_check(this);" id="12"> 12</td>
+            <td><input type="checkbox" name="except" value="13" onclick="count_check(this);" id="13"> 13</td>
+            <td><input type="checkbox" name="except" value="14" onclick="count_check(this);" id="14"> 14</td>
+          </tr>
+          <tr>
+            <td><input type="checkbox" name="except" value="15" onclick="count_check(this);" id="15"> 15</td>
+            <td><input type="checkbox" name="except" value="16" onclick="count_check(this);" id="16"> 16</td>
+            <td><input type="checkbox" name="except" value="17" onclick="count_check(this);" id="17"> 17</td>
+            <td><input type="checkbox" name="except" value="18" onclick="count_check(this);" id="18"> 18</td>
+            <td><input type="checkbox" name="except" value="19" onclick="count_check(this);" id="19"> 19</td>
+            <td><input type="checkbox" name="except" value="20" onclick="count_check(this);" id="20"> 20</td>
+            <td><input type="checkbox" name="except" value="21" onclick="count_check(this);" id="21"> 21</td>
+          </tr>
+          <tr>
+            <td><input type="checkbox" name="except" value="22" onclick="count_check(this);" id="22"> 22</td>
+            <td><input type="checkbox" name="except" value="23" onclick="count_check(this);" id="23"> 23</td>
+            <td><input type="checkbox" name="except" value="24" onclick="count_check(this);" id="24"> 24</td>
+            <td><input type="checkbox" name="except" value="25" onclick="count_check(this);" id="25"> 25</td>
+            <td><input type="checkbox" name="except" value="26" onclick="count_check(this);" id="26"> 26</td>
+            <td><input type="checkbox" name="except" value="27" onclick="count_check(this);" id="27"> 27</td>
+            <td><input type="checkbox" name="except" value="28" onclick="count_check(this);" id="28"> 28</td>
+          </tr>
+          <tr>
+            <td><input type="checkbox" name="except" value="29" onclick="count_check(this);" id="29"> 29</td>
+            <td><input type="checkbox" name="except" value="30" onclick="count_check(this);" id="30"> 30</td>
+            <td><input type="checkbox" name="except" value="31" onclick="count_check(this);" id="31"> 31</td>
+            <td><input type="checkbox" name="except" value="32" onclick="count_check(this);" id="32"> 32</td>
+            <td><input type="checkbox" name="except" value="33" onclick="count_check(this);" id="33"> 33</td>
+            <td><input type="checkbox" name="except" value="34" onclick="count_check(this);" id="34"> 34</td>
+            <td><input type="checkbox" name="except" value="35" onclick="count_check(this);" id="35"> 35</td>
+          </tr>
+          <tr>
+            <td><input type="checkbox" name="except" value="36" onclick="count_check(this);" id="36"> 36</td>
+            <td><input type="checkbox" name="except" value="37" onclick="count_check(this);" id="37"> 37</td>
+            <td><input type="checkbox" name="except" value="38" onclick="count_check(this);" id="38"> 38</td>
+            <td><input type="checkbox" name="except" value="39" onclick="count_check(this);" id="39"> 39</td>
+            <td><input type="checkbox" name="except" value="40" onclick="count_check(this);" id="40"> 40</td>
+            <td><input type="checkbox" name="except" value="41" onclick="count_check(this);" id="41"> 41</td>
+            <td><input type="checkbox" name="except" value="42" onclick="count_check(this);" id="42"> 42</td>
+          </tr>
+          <tr>
+            <td><input type="checkbox" name="except" value="43" onclick="count_check(this);" id="43"> 43</td>
+            <td><input type="checkbox" name="except" value="44" onclick="count_check(this);" id="44"> 44</td>
+            <td><input type="checkbox" name="except" value="45" onclick="count_check(this);" id="45"> 45</td>
+          </tr>
+          </tbody>
+        </table>
+
+        <span> <input type="button" value="Submit" onclick="submit2();"><input type="reset" value="Reset" onclick="reset_disabled();"></span>
+      </div>
+      </form>
+    </div>
+
+    <div  class=" resultSec" >
+      <div id="resultDiv" >
+        <div class="main2">
+          <div class="numberdiv2">
+            <p th:if="${numbersList}!=null"></p>
+            <div class="numberset" th:each="pickedNumberEntity:${pickedNumberEntityList}">
+              <div class="lottocircle"><span class="value" th:text="${pickedNumberEntity.no1}"></span></div>
+              <div class="lottocircle"><span class="value" th:text="${pickedNumberEntity.no2}"></span></div>
+              <div class="lottocircle"><span class="value" th:text="${pickedNumberEntity.no3}"></span></div>
+              <div class="lottocircle"><span class="value" th:text="${pickedNumberEntity.no4}"></span></div>
+              <div class="lottocircle"><span class="value" th:text="${pickedNumberEntity.no5}"></span></div>
+              <div class="lottocircle"><span class="value" th:text="${pickedNumberEntity.no6}"></span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!--랜덤번호-->
+
+    <!--<div>-->
+    <!--    <div id="resultDiv2" >-->
+    <!--        <div class="main2">-->
+    <!--            <div class="numberdiv2">-->
+    <!--                <p th:if="${numbersList}!=null"></p>-->
+    <!--                    <div class="numberset" th:each="pickedNumberEntity:${pickedNumberEntityList}">-->
+    <!--                        <div class="lottocircle"><span class="value" th:text="${pickedNumberEntity.no1}"></span></div>-->
+    <!--                        <div class="lottocircle"><span class="value" th:text="${pickedNumberEntity.no2}"></span></div>-->
+    <!--                        <div class="lottocircle"><span class="value" th:text="${pickedNumberEntity.no3}"></span></div>-->
+    <!--                        <div class="lottocircle"><span class="value" th:text="${pickedNumberEntity.no4}"></span></div>-->
+    <!--                        <div class="lottocircle"><span class="value" th:text="${pickedNumberEntity.no5}"></span></div>-->
+    <!--                        <div class="lottocircle"><span class="value" th:text="${pickedNumberEntity.no6}"></span></div>-->
+    <!--                    </div>-->
+    <!--            </div>-->
+    <!--        </div>-->
+    <!--    </div>-->
+    <!--</div>-->
+
+
+  </div>
+
+
+  <!--footer-->
+
+  <div class="footer">
+    <p class="name">
+      Lizzie<br>
+    </p>
+    <div class="detail">
+      <p>
+        blog : <a class="blog-link" href="https://lizistory.tistory.com">lizistory.tistory.com</a>
+      </p>
+      <p>
+        #자바 #언제 해 #WEB
+      </p>
+    </div>
+  </div>
+
+</div>
+</body>

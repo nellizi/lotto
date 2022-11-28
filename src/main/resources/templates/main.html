@@ -1,25 +1,15 @@
 <html xmlns:th="http://thymeleaf.org" >
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
 
 <head>
     <link rel="stylesheet" type="text/css" href="style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
-
-<h1> Pick Your Own Number </h1>
-
 <body>
-<div>
-    <h4  th:text="|${numbers.times} 회차 당첨번호|"> </h4>
-        <div>
-            <span th:text="${numbers.no1}"> </span> &nbsp;&nbsp;
-            <span th:text="${numbers.no2}"> </span> &nbsp;&nbsp;
-            <span th:text="${numbers.no3}"> </span> &nbsp;&nbsp;
-            <span th:text="${numbers.no4}"> </span> &nbsp;&nbsp;
-            <span th:text="${numbers.no5}"> </span> &nbsp;&nbsp;
-            <span th:text="${numbers.no6}"> </span> &nbsp;&nbsp;
-            <span th:text="${numbers.bonus}"> </span>
-        </div>
-</div>
+
+<div class="container">
+
+<!--<h1 class="top"> Pick Your Own Number </h1>-->
 
 <div class="main">
     <div class="numberdiv">
@@ -34,27 +24,28 @@
             <div class="lottocircle"><p class="value" th:text="${numbers.no4}"></p></div>
             <div class="lottocircle"><p class="value" th:text="${numbers.no5}"></p></div>
             <div class="lottocircle"><p class="value" th:text="${numbers.no6}"></p></div>
+            <div style="margin:auto;"> <i class="bi bi-plus-circle"></i> </div>
             <div class="lottocircle"><p class="value" th:text="${numbers.bonus}"></p></div>
         </div>
     </div>
 </div>
 
 <script>
-<!--        var number = document.getElementsByClassName("lottocircle");-->
-<!--        for (var i = 0 ; i < number.length ; i++) {-->
-<!--            if(parseInt(number[i].textContent)>=40){-->
-<!--                number[i].style="background-color:#8b00ff";-->
-<!--            }else if(parseInt(number[i].textContent)>=30){-->
-<!--                number[i].style="background-color:#146eb4";-->
-<!--            }else if(parseInt(number[i].textContent)>=20){-->
-<!--                number[i].style="background-color:#c1d82f";-->
-<!--            }else if(parseInt(number[i].textContent)>=10){-->
-<!--                number[i].style="background-color:#fbb034";-->
-<!--            }-->
-<!--            else{-->
-<!--                number[i].style="background-color:#ff0000";-->
-<!--            }-->
-<!--        }-->
+        var number = document.getElementsByClassName("lottocircle");
+        for (var i = 0 ; i < number.length ; i++) {
+            if(parseInt(number[i].textContent)>=40){
+                number[i].style="background-color:#8b00ff";
+            }else if(parseInt(number[i].textContent)>=30){
+                number[i].style="background-color:#146eb4";
+            }else if(parseInt(number[i].textContent)>=20){
+                number[i].style="background-color:#c1d82f";
+            }else if(parseInt(number[i].textContent)>=10){
+                number[i].style="background-color:#fbb034";
+            }
+            else{
+                number[i].style="background-color:#ff0000";
+            }
+        }
 
 
     function count_check(obj){
@@ -124,9 +115,6 @@ function submit2(){
 
 
 
-
-
-
     function reset_disabled(){
 
         const disabled = document.getElementsByName('except');
@@ -144,7 +132,7 @@ function submit2(){
 <form method="get" action="/make" name="checked_number"  >
 
 <div style=" float:left; margin-right:20px;">
-    <h4> 포함 숫자</h4>
+    <h4 align="center"> 포함 숫자</h4>
     <table width="400" class="checkbox">
         <tbody>
         <tr>
@@ -211,7 +199,7 @@ function submit2(){
 </div>
 
 <div style=" float:left;">
-    <h4> 제외 숫자</h4>
+    <h4 align="center"> 제외 숫자</h4>
     <table width="400" class="checkbox">
         <tbody>
         <tr>
@@ -298,18 +286,7 @@ function submit2(){
         </div>
     </div>
 
-</div>
-</div>
-
-
-<div class="footer">
-    <p class="name">Lizzie<br></p>
-    <div class="detail">
-        <p>blog : <a class="blog-link" href="https://lizistory.tistory.com">lizistory.tistory.com</a></p>
-        <p>#자바 #언제 해 #WEB</p>
-    </div>
-</div>
-<script>
+    <script>
      var number = document.getElementsByClassName("lottocircle");
         for (var i = 0 ; i < number.length ; i++) {
             if(parseInt(number[i].textContent)>=40){
@@ -327,4 +304,17 @@ function submit2(){
         }
 </script>
 
+</div>
+</div>
+
+<div class="footer">
+    <p class="name">Lizzie<br></p>
+    <div class="detail">
+        <p>blog : <a class="blog-link" href="https://lizistory.tistory.com">lizistory.tistory.com</a></p>
+        <p>#자바 #언제 해 #WEB</p>
+    </div>
+</div>
+
+
+</div>
 </body>

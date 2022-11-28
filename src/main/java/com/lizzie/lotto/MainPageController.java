@@ -21,6 +21,12 @@ public class MainPageController {
 
     private final MainPageService mainPageService;
 
+
+    @GetMapping("/test")
+    public String test(){
+
+        return "main3";
+    }
     @GetMapping("/main")
     public String main(Model model) throws IOException, ParseException, org.json.simple.parser.ParseException {
 
@@ -29,7 +35,7 @@ public class MainPageController {
 
         model.addAttribute("numbers", numbers);  //numbers = 당첨번호
 
-        return "/main";
+        return "/main3";
     }
 
     public NumberEntity json(String data) throws ParseException, org.json.simple.parser.ParseException {
@@ -60,10 +66,10 @@ public class MainPageController {
 
             List<PickedNumberEntity> pickedNumberEntityList = new ArrayList<>();
 
-            for(int i = 0; i<5; i++) {
+            for(int i = 1; i<6; i++) {
                 int[] numbers = mainPageService.pick_a_number(include, except);
                 Arrays.sort(numbers);
-                PickedNumberEntity pickedNumberEntity = new PickedNumberEntity(numbers[0],numbers[1],numbers[2],numbers[3],numbers[4],numbers[5]);
+                PickedNumberEntity pickedNumberEntity = new PickedNumberEntity(i,numbers[0],numbers[1],numbers[2],numbers[3],numbers[4],numbers[5]);
                 pickedNumberEntityList.add(pickedNumberEntity);
             }
 
@@ -71,18 +77,18 @@ public class MainPageController {
 
             System.out.println(pickedNumberEntityList.get(0));
 
-            return "/main :: #resultDiv";
+            return "/main3 :: #resultDiv";
 
         }
 
-    @PostMapping("/send")
-    public String ajaxHome(@RequestParam Map<String,String> params, @RequestParam(value="include", required=false) String []include,
-    @RequestParam(value="except", required=false) String []except, Model model){
-
-        String msg = "메세지 확인";
-        model.addAttribute("msg",msg);
-        return "/main :: #resultDiv";
-    }
+//    @PostMapping("/send")
+//    public String ajaxHome(@RequestParam Map<String,String> params, @RequestParam(value="include", required=false) String []include,
+//    @RequestParam(value="except", required=false) String []except, Model model){
+//
+//        String msg = "메세지 확인";
+//        model.addAttribute("msg",msg);
+//        return "/main :: #resultDiv";
+//    }
 
 
 }
