@@ -8,12 +8,12 @@
 <body>
 
 <div class="container">
-    <div class="ttop">
-    <h1 class="top"> Pick Your Own Number! 번호 생성기 </h1>
+    <div class="top">
+    <h1 class="title"> Pick Your Own Number! </h1>
         <div>
 <div class="top">
-    <div class="main">
-        <div class="numberdiv">
+<!--    <div class="main">--><div>
+<!--        <div class="numberdiv">--> <div>
             <div class="top-div">
                 <span style="text-align:center;  color:red;"  class="top-div-name"  th:text="${numbers.times} "> </span>
                 <span >회차 당첨번호</span>
@@ -276,9 +276,9 @@ function submit2(){
 
     </div>
 
-    <div class="buttons">
-        <p><input type="button" value="Submit" onclick="submit2();"> <input  type="reset" value="reset" onclick="reset_disabled();"></p>
-    </div>
+        <p class="buttons">
+            <input type="button" value="Submit" onclick="submit2();">
+            <input  type="reset" value="reset" onclick="reset_disabled();"></p>
 
 
     <div>
@@ -286,7 +286,7 @@ function submit2(){
             <div class="resultSec">
                 <div class="resultNumber">
                     <p th:if="${numbersList}!=null" ></p>
-                    <div class="numberset" th:each="pickedNumberEntity:${pickedNumberEntityList}">
+                    <div class="numberset2" th:each="pickedNumberEntity:${pickedNumberEntityList}">
                         <div class="lottocircle"><span class="value" th:text="${pickedNumberEntity.no1}"></span></div>
                         <div class="lottocircle"><span class="value" th:text="${pickedNumberEntity.no2}"></span></div>
                         <div class="lottocircle"><span class="value" th:text="${pickedNumberEntity.no3}"></span></div>
@@ -324,7 +324,6 @@ function submit2(){
         <p class="name">Lizzie<br></p>
         <div class="detail">
             <p>blog : <a class="blog-link" href="https://lizistory.tistory.com">lizistory.tistory.com</a></p>
-            <p>#자바 #언제 해 #WEB</p>
         </div>
     </div>
 

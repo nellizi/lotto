@@ -1,3 +1,10 @@
+@font-face {
+    font-family: 'CWDangamAsac-Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/CWDangamAsac-Bold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 .main{
     height: auto !important;
      width: 1000px;
@@ -33,6 +40,13 @@
     margin-right:auto;
     display: flex;
 }
+.numberset2{
+    width:400px;
+    margin-top: 20px;
+    margin-left:auto;
+    margin-right:auto;
+    display: flex;
+}
 .lottocircle{
     display: table;
     border-radius: 50%;
@@ -54,7 +68,7 @@
 
 .footer{
     width:100%;
-    height:100px;
+    height:80px;
     position:absolute;
     bottom:0;
     text-align: center;
@@ -76,7 +90,13 @@ p{
     color:white;
 }
 
-.ttop{
+.title{
+top : 30px;
+font-size : 50px;
+  font-family: 'CWDangamAsac-Bold';
+  }
+
+.top{
   margin-top: 20px;
   width: 1000px;
   height: 80px;
@@ -117,8 +137,6 @@ p{
 }
 
 .container{
-  width: 1400px;
-  margin: 0;
 }
 
 .numberdiv2{
@@ -126,5 +144,11 @@ p{
 }
 
 .resultNumber{
-margin-top: 110px;
+margin-top: 90px;
+}
+
+body{
+  background-image: url("/backgroundImage.jpg");
+  background-size: cover;
+
 }
