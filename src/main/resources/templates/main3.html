@@ -8,12 +8,11 @@
 <body>
 
 <div class="container">
+    <div><h1 align="center" class="title"> Pick Your Own Number! </h1></div>
+
     <div class="top">
-    <h1 class="title"> Pick Your Own Number! </h1>
-        <div>
-<div class="top">
-<!--    <div class="main">--><div>
-<!--        <div class="numberdiv">--> <div>
+<!--    <div class="main">-->
+<!--        <div class="numberdiv">-->
             <div class="top-div">
                 <span style="text-align:center;  color:red;"  class="top-div-name"  th:text="${numbers.times} "> </span>
                 <span >회차 당첨번호</span>
@@ -28,8 +27,7 @@
                 <div style="margin:auto;"> <i class="bi bi-plus-circle"></i> </div>
                 <div class="lottocircle"><p class="value" th:text="${numbers.bonus}"></p></div>
             </div>
-        </div>
-    </div>
+
 </div>
 
     <script>
@@ -121,9 +119,24 @@ function submit2(){
 
         const disabled = document.getElementsByName('except');
 
+        const ckeckedIn = document.getElementsByName('include');
+        const ckeckedEx = document.getElementsByName('except');
+
         disabled.forEach((checkbox) => {
         checkbox.disabled = false;
         })
+
+         ckeckedIn.forEach((checkbox) => {
+        checkbox.checked = false;
+        })
+
+         ckeckedEx.forEach((checkbox) => {
+        checkbox.checked = false;
+        })
+
+
+
+
     }
 
 </script>
@@ -134,7 +147,7 @@ function submit2(){
 
         <form method="get" action="/make" name="checked_number"  >
             <span>
-                <div style=" float:left; margin-right:20px;">
+                <div class= "table_box" style=" float:left; margin-right:20px;">
                     <h4 align="center"> 포함 숫자</h4>
                     <table width="400" class="checkbox">
                     <tbody>
@@ -201,7 +214,7 @@ function submit2(){
                     </table>
                 </div>
 
-                <div style=" float:left;">
+                <div class= "table_box" style=" float:left;">
                 <h4 align="center"> 제외 숫자</h4>
                 <table width="400" class="checkbox">
                     <tbody>
@@ -268,18 +281,13 @@ function submit2(){
                 </table>
             </div>
             </span>
-
-<!--            <span >-->
-<!--                <p><input type="button" value="Submit" onclick="submit2();"> <input  type="reset" value="reset" onclick="reset_disabled();"></p>-->
-<!--            </span>-->
         </form>
 
     </div>
-
-        <p class="buttons">
-            <input type="button" value="Submit" onclick="submit2();">
-            <input  type="reset" value="reset" onclick="reset_disabled();"></p>
-
+        <div class="buttons">
+            <button class="button"  type="button" value="Submit" onclick="submit2();">뽑기 <i class="bi bi-magic"></i></button>
+            <button class="button" type="button" value="Reset" onclick="reset_disabled();">재 선택 <i class="bi bi-arrow-repeat"></i></button>
+        </div>
 
     <div>
         <div id="resultDiv">
@@ -319,16 +327,13 @@ function submit2(){
 
 </div>
 
-
-    <div class="footer">
-        <p class="name">Lizzie<br></p>
-        <div class="detail">
-            <p>blog : <a class="blog-link" href="https://lizistory.tistory.com">lizistory.tistory.com</a></p>
-        </div>
-    </div>
-
 </div>
 
-    </div>
-</div>
+<!--<div class="footer">-->
+<!--        <p class="name">Lizzie<br></p>-->
+<!--        <div class="detail">-->
+<!--            <p>blog : <a class="blog-link" href="https://lizistory.tistory.com">lizistory.tistory.com</a></p>-->
+<!--        </div>-->
+<!--    </div>-->
+
 </body>
